@@ -1,3 +1,5 @@
+import { MaterialModule } from './core/common/material-components.module';
+import { CoreModule } from './core/core.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,7 +14,7 @@ import { BrowserXhr } from '@angular/http';
 import { NgProgressModule } from '@ngx-progressbar/core';
 import {  NgProgressBrowserXhr } from 'ngx-progressbar';
 import { HttpClientModule } from '@angular/common/http';
-import { PageNotFoundComponent } from './core/common/page-not-found.component';
+
 import { FormsModule } from '../../node_modules/@angular/forms';
 import { ImageViewerModule } from '@hallysonh/ngx-imageviewer';
 import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
@@ -20,14 +22,14 @@ import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    PageNotFoundComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MaterialModule,
     MomentModule,
     FormsModule,
     FlexLayoutModule,
@@ -38,7 +40,8 @@ import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
       thick: true
     }),
     NgProgressHttpModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    CoreModule
   ],
   providers: [
     { provide: BrowserXhr, useClass: NgProgressBrowserXhr },

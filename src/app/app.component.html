@@ -1,26 +1,28 @@
-<!-- The content below is only a placeholder and can be replaced.
+<!-- <ng-progress>
+</ng-progress>
+
 <div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-
-</div>
-
-
-<router-outlet></router-outlet> -->
-
-<ng-progress></ng-progress>
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <button routerLink="/transaction">Dashboard</button>  
+  <button routerLink="/transaction">Dashboard</button>
   <button routerLink="/transaction/list">Transaction List</button>
-  <button routerLink="/transaction/new">New 
-    Transaction</button>
-  <!-- <button routerLink="/staff">Staff</button> -->
-  
+  <button routerLink="/transaction/new">New Transaction
+  </button>
+
+
   <h1>
     Hi {{ title }}!
   </h1>
 </div>
-<router-outlet></router-outlet>
+<router-outlet></router-outlet> -->
+
+<app-top-nav class="fixed-topnav" fxHide.gt-xs></app-top-nav>
+<mat-sidenav-container>
+  <mat-sidenav #appDrawer mode="over" opened="false">
+    <mat-nav-list>
+      <app-menu-list-item *ngFor="let item of navItems" [item]="item"></app-menu-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <app-top-nav fxHide.xs></app-top-nav>
+  <router-outlet></router-outlet>
+</mat-sidenav-container>
+
 

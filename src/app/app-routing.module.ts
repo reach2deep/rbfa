@@ -1,4 +1,4 @@
-import { PageNotFoundComponent } from './core/common/page-not-found.component';
+// import { PageNotFoundComponent } from './core/common/page-not-found.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -12,10 +12,10 @@ const routes: Routes = [
     redirectTo: '',
     pathMatch: 'full'
   },
-  {
-    path: '**',
-    component: PageNotFoundComponent
-  }
+  // {
+  //   path: '**',
+  //   component: PageNotFoundComponent
+  // }
 ];
 
 @NgModule({

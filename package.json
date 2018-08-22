@@ -3,13 +3,21 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
+    "http-server": "http-server dist/ -c-1",
     "build": "ng build",
+    "build:library": "ng build ngx-example-library",
+    "deploy": "ng build --prod && angular-cli-ghpages",
+    "postinstall": "ng build --aot -prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
   "private": true,
+  "engines": {
+    "node": ">= 8.9.0",
+    "npm": ">= 5.0.0"
+  },
   "dependencies": {
     "@angular/animations": "^6.1.2",
     "@angular/cdk": "^6.4.3",
@@ -32,8 +40,10 @@
     "@ngx-progressbar/http": "^5.0.1",
     "@rxjs/rx": "^4.1.0",
     "@swimlane/ngx-datatable": "^13.1.0",
+    "@types/lodash-es": "^4.17.1",
     "core-js": "^2.5.4",
     "goog": "^0.2.1",
+    "lodash-es": "^4.17.10",
     "moment": "^2.22.2",
     "ng-snotify": "^4.3.1",
     "ngc-float-button": "^1.2.1",
