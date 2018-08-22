@@ -1,0 +1,41 @@
+<ngc-float-button icon="add" class="fab-bottom-right">
+        <ngc-float-item-button icon="mode_edit" content="Expense"  (click)="createNewItem('Expense')"></ngc-float-item-button>
+        <ngc-float-item-button icon="gps_fixed" content="Income"  (click)="createNewItem('Income')"></ngc-float-item-button>
+        <!-- <ngc-float-item-button icon="gps_fixed" content="Bill" (click)="createNewItem('Bill')"></ngc-float-item-button> -->
+</ngc-float-button>
+
+<ngx-datatable #myTable class="material fullscreen" 
+        [columnMode]="'force'" 
+        [headerHeight]="50" 
+        [footerHeight]="50"
+        [rows]="rows"
+        [rowHeight]="'auto'"
+        [externalPaging]="true"
+        [count]="page.totalElements"
+        [offset]="page.pageNumber"
+        [limit]="page.size"
+        (page)='setPage($event)'>
+    <ngx-datatable-column name="Type" prop="transactionType"></ngx-datatable-column>    
+    <ngx-datatable-column name="Date" prop="transactionDate">
+            <ng-template let-value="value" ngx-datatable-cell-template>
+            {{ value | date:'dd-MM-yyyy'}}
+            </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Category" prop="category"></ngx-datatable-column>
+    <ngx-datatable-column name="Sub Category" prop="subCategory"></ngx-datatable-column>
+    <ngx-datatable-column name="Amount" prop="amount"></ngx-datatable-column>
+    <ngx-datatable-column name="Action" prop="_id" [sortable]="false">
+        <ng-template let-rowIndex="rowIndex" let-id="value" ngx-datatable-cell-template>
+            <button mat-icon-button color="accent" (click)="viewDetail(id)">
+                    <!-- <fa-icon [icon]="['fas', 'coffee']" [border]="true"></fa-icon> -->
+                    <fa-icon icon="edit" style="color:darkblue;"></fa-icon> 
+                    <!-- <fa-layers class="fa-fw">
+                            <fa-icon [icon]="['fas', 'square']"></fa-icon>
+                            <fa-layers-text content="Yo" style="color: white;" transform="shrink-4"></fa-layers-text>
+                          </fa-layers>
+                    <fa-icon [icon]="['fas', 'sync']" [spin]="isSyncAnimated" (click)="isSyncAnimated=!isSyncAnimated"></fa-icon> -->
+         </button>
+        </ng-template>
+    </ngx-datatable-column>
+</ngx-datatable>
+

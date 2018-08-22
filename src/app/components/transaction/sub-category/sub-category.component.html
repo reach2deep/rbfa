@@ -1,0 +1,61 @@
+<mat-progress-spinner *ngIf="!subCategories" class="progress__spinner" [color]="'primary'" [mode]="'indeterminate'">
+</mat-progress-spinner>
+<mat-card *ngIf="(!canAddEditItem)">
+    <mat-card-header>
+            <mat-card-title> <h3> Sub Category </h3> </mat-card-title>
+        
+        <div fxFlex></div>
+        <button mat-icon-button (click)="editList()">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-nav-list>
+                <mat-list-item (click)="addNewItem()"  *ngIf="isEditEnabled">
+                        <mat-icon matListIcon>add</mat-icon>
+                        <h3 class="name" matLine>Add New</h3>
+                        <button *ngIf="isEditEnabled" mat-button (click)="addNewItem()">
+                </button>
+                    </mat-list-item>
+            <mat-list-item (click)="setSubCategorySelected(subcategory)" *ngFor="let subcategory of subCategories">
+                <mat-icon matListIcon>file</mat-icon>
+                <h3 class="name" matLine>{{subcategory.name}}</h3>
+                <button *ngIf="isEditEnabled" mat-icon-button (click)="deleteItem($event,category)">
+                 <mat-icon>delete</mat-icon>
+                 </button>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-card-content>
+    <!-- <mat-card-actions *ngIf="isEditEnabled">
+        <mat-list-item (click)="addNewItem()">
+            <button mat-button color="primary">
+                        <mat-icon>add</mat-icon>
+                        Add New
+                    </button>
+        </mat-list-item>
+    </mat-card-actions> -->
+
+</mat-card>
+
+<mat-card *ngIf="canAddEditItem">
+    <mat-card-header>
+        <button mat-icon-button (click)="cancelAddEditItem()">
+                    <mat-icon>cancel</mat-icon>
+                  </button>
+        <div fxFlex></div>
+         <h3> Edit Sub Category </h3> 
+        
+        <div fxFlex></div>
+        <button mat-icon-button (click)="saveItem()" [disabled]="!newSubCategoryForm.valid">
+        <mat-icon>save</mat-icon>
+      </button>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="newSubCategoryForm">
+            <mat-form-field>
+                <input name="editCat" type="text" formControlName="name" matInput placeholder="Add new sub category" [(ngModel)]="addEditSubCategoryItem.name">
+            </mat-form-field>
+
+        </form>
+    </mat-card-content>
+</mat-card>

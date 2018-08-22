@@ -1,0 +1,17 @@
+// :host {
+//     display: block;
+//     width: 100%;
+//     height: 100%;
+//     .ngx-datatable {
+//         height: 100vh;
+//     }
+// }
+
+.fab-bottom-right {
+    top: auto;
+    left: auto;
+    position: fixed !important;
+    right: 16px;
+    bottom: 16px;
+    z-index: 100;
+}

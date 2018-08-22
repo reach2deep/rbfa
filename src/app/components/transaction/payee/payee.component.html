@@ -1,0 +1,62 @@
+<mat-progress-spinner *ngIf="!payees" class="progress__spinner" [color]="'primary'" [mode]="'indeterminate'">
+  </mat-progress-spinner>
+<mat-card *ngIf="(!canAddEditItem)">
+        <mat-card-header>
+            <mat-card-title> <h3> Payee</h3> </mat-card-title>
+          <div fxFlex></div>
+          <button mat-icon-button (click)="editList()">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </mat-card-header>
+          <mat-card-content>
+<mat-nav-list >
+    <mat-list-item (click)="addNewItem()"  *ngIf="isEditEnabled">
+        <mat-icon matListIcon>add</mat-icon>
+        <h3 class="name" matLine>Add New</h3>
+        <button *ngIf="isEditEnabled" mat-button (click)="addNewItem()">
+</button>
+    </mat-list-item>
+    <mat-list-item (click)="setSelectedPayee(payee)" *ngFor="let payee of payees">
+        <mat-icon matListIcon>folder</mat-icon>
+      <h3 class="name" matLine>{{payee.name}}</h3>    
+      <button *ngIf="isEditEnabled" mat-icon-button (click)="deleteItem($event,payee)">
+                    
+          <mat-icon>delete</mat-icon>
+      </button>  
+    </mat-list-item>
+</mat-nav-list>
+</mat-card-content>
+<!-- <mat-card-actions *ngIf="isEditEnabled">
+    <mat-list-item (click)="addNewItem()">
+        <button mat-icon-button color="primary">
+            <mat-icon>add</mat-icon>
+            Add New
+        </button>
+          </mat-list-item>    
+</mat-card-actions> -->
+
+</mat-card>
+
+<mat-card *ngIf="canAddEditItem">
+        <mat-card-header>
+                <button mat-icon-button (click)="cancelAddEditItem()">
+                        <mat-icon>cancel</mat-icon>
+                      </button>
+                      <div fxFlex></div>
+                      <h3> Edit Payee</h3>
+          <div fxFlex></div>
+          <button mat-icon-button (click)="saveItem()" [disabled]="!newPayeeForm.valid">
+            <mat-icon>save</mat-icon>
+          </button>
+        </mat-card-header>
+        <mat-card-content>
+                <form [formGroup]="newPayeeForm">
+                        <mat-form-field>
+                          <input name="editCat" type="text" matInput placeholder="Add new payee" formControlName="name" 
+                          [(ngModel)]="addEditPayeeItem.name">
+                          <!-- <mat-icon (click)="saveNewItem()" matSuffix>check</mat-icon> -->
+                        </mat-form-field>
+                       
+                      </form>
+        </mat-card-content>        
+      </mat-card>
