@@ -3,8 +3,10 @@
         <ngc-float-item-button icon="gps_fixed" content="Income"  (click)="createNewItem('Income')"></ngc-float-item-button>
         <!-- <ngc-float-item-button icon="gps_fixed" content="Bill" (click)="createNewItem('Bill')"></ngc-float-item-button> -->
 </ngc-float-button>
+<div class="all-in-one-table" appPage appPagePadding appScrollbar>
 
-<ngx-datatable #myTable class="material fullscreen" 
+         
+<ngx-datatable #myTable class="material expandable" 
         [columnMode]="'force'" 
         [headerHeight]="50" 
         [footerHeight]="50"
@@ -15,27 +17,73 @@
         [offset]="page.pageNumber"
         [limit]="page.size"
         (page)='setPage($event)'>
-    <ngx-datatable-column name="Type" prop="transactionType"></ngx-datatable-column>    
-    <ngx-datatable-column name="Date" prop="transactionDate">
+
+          <!-- Row Detail Template -->
+          <ngx-datatable-row-detail [rowHeight]="50" #myDetailRow (toggle)="onDetailToggle($event)">
+                        <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+                          <div style="padding-left:60px; font-size:14px">
+                            <div>{{row.transactionDate}}, {{row.Category}} ,{{row.subCategory}} </div>
+                          </div>
+                        </ng-template>
+                      </ngx-datatable-row-detail>
+
+                        <!-- Column Templates -->
+         <ngx-datatable-column
+         [width]="50"
+         [resizeable]="false"
+         [sortable]="false"
+         [draggable]="false"
+         [canAutoResize]="false">
+         <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+           <a
+             
+             [class.datatable-icon-right]="!expanded"
+             [class.datatable-icon-down]="expanded"
+             title="Expand/Collapse Row"
+             (click)="toggleExpandRow(row)"
+             class="desktop-hidden">
+           </a>
+         </ng-template>
+       </ngx-datatable-column>
+
+        <!-- Columns -->
+    <ngx-datatable-column name="Type" prop="transactionType" [flexGrow]="3" ></ngx-datatable-column>    
+    <ngx-datatable-column name="Date" prop="transactionDate" [flexGrow]="3" [minWidth]="80" >
             <ng-template let-value="value" ngx-datatable-cell-template>
             {{ value | date:'dd-MM-yyyy'}}
             </ng-template>
     </ngx-datatable-column>
-    <ngx-datatable-column name="Category" prop="category"></ngx-datatable-column>
-    <ngx-datatable-column name="Sub Category" prop="subCategory"></ngx-datatable-column>
-    <ngx-datatable-column name="Amount" prop="amount"></ngx-datatable-column>
-    <ngx-datatable-column name="Action" prop="_id" [sortable]="false">
+    <!-- <ngx-datatable-column name="Category" prop="category"></ngx-datatable-column>
+    <ngx-datatable-column name="Sub Category" prop="subCategory"></ngx-datatable-column> -->
+
+    <ngx-datatable-column name="Category" [flexGrow]="1">
+                <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                  <span class="mobile-hidden">{{column.name}}</span>
+                </ng-template>
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                  <span class="mobile-hidden">{{value}}</span>
+                </ng-template>
+   </ngx-datatable-column>
+
+   <ngx-datatable-column name="Sub Category" [flexGrow]="1">
+                <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                  <span class="mobile-hidden">{{column.name}}</span>
+                </ng-template>
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <span class="mobile-hidden">{{value}}</span>
+                </ng-template>
+   </ngx-datatable-column>
+
+    <ngx-datatable-column name="Amount" prop="amount" [flexGrow]="0"></ngx-datatable-column>
+    <!-- <ngx-datatable-column name="Action" prop="_id" [sortable]="false">
         <ng-template let-rowIndex="rowIndex" let-id="value" ngx-datatable-cell-template>
             <button mat-icon-button color="accent" (click)="viewDetail(id)">
-                    <!-- <fa-icon [icon]="['fas', 'coffee']" [border]="true"></fa-icon> -->
-                    <fa-icon icon="edit" style="color:darkblue;"></fa-icon> 
-                    <!-- <fa-layers class="fa-fw">
-                            <fa-icon [icon]="['fas', 'square']"></fa-icon>
-                            <fa-layers-text content="Yo" style="color: white;" transform="shrink-4"></fa-layers-text>
-                          </fa-layers>
-                    <fa-icon [icon]="['fas', 'sync']" [spin]="isSyncAnimated" (click)="isSyncAnimated=!isSyncAnimated"></fa-icon> -->
+           
+                    <fa-icon icon="pen" style="color:darkblue;"></fa-icon> 
+           
          </button>
         </ng-template>
-    </ngx-datatable-column>
+    </ngx-datatable-column> -->
 </ngx-datatable>
+</div>
 

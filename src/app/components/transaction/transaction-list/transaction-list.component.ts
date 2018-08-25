@@ -1,6 +1,6 @@
 import { AppConfig } from './../../../config/app.config';
 import { TransactionService } from './../transaction.service';
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, ViewEncapsulation } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Transaction, Category, Page } from '../transaction.model';
 import { Observable, ReplaySubject } from '../../../../../node_modules/rxjs';
@@ -14,7 +14,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-transaction-list',
   templateUrl: './transaction-list.component.html',
-  styleUrls: ['./transaction-list.component.scss']
+  styleUrls: ['./transaction-list.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class TransactionListComponent implements OnInit {
@@ -23,6 +24,7 @@ export class TransactionListComponent implements OnInit {
   rows = new Array<Transaction>();
   transactionType: string;
 
+  @ViewChild('myTable') table: any;
   constructor(private router: Router
     , private route: ActivatedRoute
     , private http: HttpClient
@@ -65,6 +67,15 @@ viewDetail(id): void {
     console.log('routing ' + [AppConfig.routes.transactions + '/' + id]);
     this.router.navigate([AppConfig.routes.transactions + '/' + id]);
   }
+}
+
+onDetailToggle(event) {
+  console.log('Detail Toggled', event);
+}
+
+toggleExpandRow(row) {
+  console.log('Toggled Expand Row!', row);
+  this.table.rowDetail.toggleExpandRow(row);
 }
 
 

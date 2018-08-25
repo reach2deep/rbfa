@@ -1,0 +1,65 @@
+<app-number-view *ngIf="isNumPadVisible" (selectedNumber)="onAmountSelected($event)"></app-number-view>
+<h1 mat-dialog-title *ngIf="!isCategoryVisible && !isPayeeVisible && !isNumPadVisible">{{mode}} {{ transaction.transactionType }} </h1>
+<div mat-dialog-content>    
+  <form [formGroup]="newTransactionForm" #form="ngForm">
+      <div class="result" fxLayout="column" *ngIf="!isCategoryVisible && !isPayeeVisible && !isNumPadVisible">
+          <div fxLayout="row wrap" fxLayout.gt-sm="row" fxLayoutGap="16px">
+              <mat-form-field fxFlex>
+                  <mat-select placeholder="Add Funds To" [(value)]="selectedAccoiunt" formControlName="accountName" [(ngModel)]="transaction.accountName">
+                    <mat-option value="Main Account">Main Account</mat-option>
+                    <mat-option value="Expense Account">Expense Account</mat-option>                      
+                  </mat-select>
+                </mat-form-field>
+            <mat-form-field fxFlex>
+              <input matInput [matDatepicker]="picker" placeholder="Date" formControlName="transactionDate" [(ngModel)]="transaction.transactionDate">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker touchUi="true" #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          
+          <div fxLayout="row wrap" fxLayout.gt-sm="row" fxLayoutGap="16px">              
+            <mat-form-field fxFlex>
+              <input matInput placeholder="Amount" (focus)="toggleNumberView()" (focusout)="toggleNumberView()" formControlName="amount"
+                [(ngModel)]="transaction.amount">
+            </mat-form-field>
+          </div>
+
+
+          <mat-form-field>
+            <textarea matInput placeholder="Notes" formControlName="description" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"
+              [(ngModel)]="transaction.description"></textarea>
+          </mat-form-field>
+
+          <!-- <div class="actions" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="8px">
+            <button mat-button type="button" color="primary">CLEAR
+            </button>
+            <button mat-raised-button color="primary" (click)="createNewTransaction(newTransactionForm.value)" [disabled]="!newTransactionForm.valid">SAVE</button>
+          </div> -->
+        </div>
+
+  </form>
+</div>
+<div mat-dialog-actions *ngIf="!isCategoryVisible && !isPayeeVisible && !isNumPadVisible">
+  <!-- <button mat-raised-button class="close" (click)="onNoClick()" color="warn">Cancel</button> -->
+  <button mat-raised-button color="primary" (click)="createNewTransaction(newTransactionForm.value)" [disabled]="!newTransactionForm.valid">SAVE</button>
+</div>
+<!-- 
+<form >
+    <div style="flex-direction: row;box-sizing: border-box;/* display: flex; */">
+  
+         
+  
+      <mat-card >
+        <mat-card-header>
+          <mat-card-title>
+            <h3> {{mode}} {{ transaction.transactionType }} </h3>
+          </mat-card-title>
+          <div fxFlex></div>
+        </mat-card-header>
+        <mat-card-content style="padding:5px !important;">
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </form> -->
+  

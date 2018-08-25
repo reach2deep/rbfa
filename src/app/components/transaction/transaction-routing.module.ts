@@ -7,10 +7,10 @@ import { TransactionDetailComponent } from './transaction-detail/transaction-det
 import { TransactionDashboardComponent } from './transaction-dashboard/transaction-dashboard.component';
 import { NumberViewComponent } from './number-view/number-view.component';
 
-const Transaction_Routes: Routes = [
+const routes: Routes = [
     {
         path: '',
-        component: TransactionDashboardComponent
+        component: TransactionListComponent // TransactionDashboardComponent
       },
     {
       path: 'list',
@@ -39,7 +39,7 @@ component: NumberViewComponent
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(Transaction_Routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
 export class TransactionRoutingModule { }

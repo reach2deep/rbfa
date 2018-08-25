@@ -8,6 +8,7 @@ export const AppConfig: IAppConfig = {
   routes: {
     heroes: 'heroes',
     transactions: 'transaction',
+    accounts: 'account',
     error404: '404'
   },
   endpoints: {
@@ -15,6 +16,7 @@ export const AppConfig: IAppConfig = {
     transactions: 'transaction',
     category: 'category',
     payee: 'payee',
+    account: 'account',
     fileupload: 'http://localhost:3000/api/upload',
     masters: 'http://localhost:3000/api/masters'
   },

@@ -1,0 +1,24 @@
+<ngc-float-button icon="add" class="fab-bottom-right">
+  <ngc-float-item-button icon="mode_edit" content="Add Funds" (click)="createNewItem()"></ngc-float-item-button>
+</ngc-float-button>
+
+<ngx-datatable #myTable class="material fullscreen" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rows]="rows"
+  [rowHeight]="'auto'" [externalPaging]="true" [count]="page.totalElements" [offset]="page.pageNumber" [limit]="page.size"
+  (page)='setPage($event)'>
+  <ngx-datatable-column name="Account Name" prop="accountName"></ngx-datatable-column>
+  <ngx-datatable-column name="Amount" prop="amount"></ngx-datatable-column>
+  <ngx-datatable-column name="Transaction Date" prop="transactionDate">
+    <ng-template let-value="value" ngx-datatable-cell-template>
+      {{ value | date:'dd-MM-yyyy'}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Description" prop="description"></ngx-datatable-column>
+
+  <ngx-datatable-column name="Action" prop="_id" [sortable]="false">
+    <ng-template let-rowIndex="rowIndex" let-id="value" ngx-datatable-cell-template>
+      <button mat-icon-button color="accent" (click)="viewDetail(id)">
+        <fa-icon icon="edit" style="color:darkblue;"></fa-icon>
+      </button>
+    </ng-template>
+  </ngx-datatable-column>
+</ngx-datatable>

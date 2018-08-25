@@ -9,7 +9,7 @@ import { MatDialog } from '@angular/material';
 import { Component, OnInit, ViewChild, Output, EventEmitter, Inject, ElementRef, AfterViewInit, HostListener } from '@angular/core';
 
 import {Location} from '@angular/common';
-import { SnotifyService } from '../../../../../node_modules/ng-snotify';
+
 
 
 @Component({
@@ -38,7 +38,7 @@ imageSrc: any;
     private formBuilder: FormBuilder,
     private transactionService: TransactionService,
     // private masterdataService: MasterDataProvider,
-    private snotifyService: SnotifyService,
+    // private snotifyService: SnotifyService,
     private activatedRoute: ActivatedRoute,
     private location: Location,
   //  @Inject(MAT_DIALOG_DATA) public data: any

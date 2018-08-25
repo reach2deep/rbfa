@@ -1,3 +1,5 @@
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ListModule } from './../../core/common/list/list.module';
 import { NumberViewComponent } from './number-view/number-view.component';
 import { PayeeComponent } from './payee/payee.component';
 import { SubCategoryComponent } from './sub-category/sub-category.component';
@@ -17,22 +19,25 @@ import { ImageViewerModule } from '@hallysonh/ngx-imageviewer';
 import {NgcFloatButtonModule} from 'ngc-float-button';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MomentModule } from 'ngx-moment';
+import { PageModule } from '../../core/common/page/page.module';
 
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
+        FlexLayoutModule,
         ReactiveFormsModule,
         NgxDatatableModule,
         MaterialModule,
+        PageModule,
+        ListModule,
         ImageViewerModule,
         TransactionRoutingModule,
         NgcFloatButtonModule,
         FontAwesomeModule,
         MomentModule
     ],
-    exports: [],
     declarations: [
         TransactionDashboardComponent,
         TransactionListComponent,

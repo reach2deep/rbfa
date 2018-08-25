@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class Api {
   // API URL
-  url: String = 'http://localhost:3000/api';
+  url: String = 'https://v-farm.herokuapp.com/api' ; // 'http://localhost:3000/api';
 
   constructor(public http: HttpClient) {
   }
