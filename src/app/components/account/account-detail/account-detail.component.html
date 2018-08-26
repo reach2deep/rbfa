@@ -1,8 +1,8 @@
-<app-number-view *ngIf="isNumPadVisible" (selectedNumber)="onAmountSelected($event)"></app-number-view>
-<h1 mat-dialog-title *ngIf="!isCategoryVisible && !isPayeeVisible && !isNumPadVisible">{{mode}} {{ transaction.transactionType }} </h1>
+<app-num-pad *ngIf="isNumPadVisible" (selectedNumber)="onAmountSelected($event)"></app-num-pad>
+<h1 mat-dialog-title *ngIf="!isNumPadVisible">{{mode}} {{ transaction.transactionType }} </h1>
 <div mat-dialog-content>    
   <form [formGroup]="newTransactionForm" #form="ngForm">
-      <div class="result" fxLayout="column" *ngIf="!isCategoryVisible && !isPayeeVisible && !isNumPadVisible">
+      <div class="result" fxLayout="column" *ngIf="!isNumPadVisible">
           <div fxLayout="row wrap" fxLayout.gt-sm="row" fxLayoutGap="16px">
               <mat-form-field fxFlex>
                   <mat-select placeholder="Add Funds To" [(value)]="selectedAccoiunt" formControlName="accountName" [(ngModel)]="transaction.accountName">
@@ -39,7 +39,7 @@
 
   </form>
 </div>
-<div mat-dialog-actions *ngIf="!isCategoryVisible && !isPayeeVisible && !isNumPadVisible">
+<div mat-dialog-actions *ngIf="!isNumPadVisible">
   <!-- <button mat-raised-button class="close" (click)="onNoClick()" color="warn">Cancel</button> -->
   <button mat-raised-button color="primary" (click)="createNewTransaction(newTransactionForm.value)" [disabled]="!newTransactionForm.valid">SAVE</button>
 </div>

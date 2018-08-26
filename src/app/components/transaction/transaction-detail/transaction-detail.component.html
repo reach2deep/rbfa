@@ -20,13 +20,14 @@
   </div> -->
 <!-- </form> -->
 
+<div  appPage appPagePadding appScrollbar>
 
 <form [formGroup]="newTransactionForm" #form="ngForm">
-  <div style="flex-direction: row;box-sizing: border-box;/* display: flex; */">
+  <div style="flex-direction: row;box-sizing: border-box;/* display: flex; */" >
 
     <app-category *ngIf="isCategoryVisible && !isPayeeVisible" (selectedCategoryChange)="onCategorySelected($event)"></app-category>
     <app-payee *ngIf="isPayeeVisible" (selectedPayeeChange)="onPayeeSelected($event)"></app-payee>
-    <app-number-view *ngIf="isNumPadVisible" (selectedNumber)="onAmountSelected($event)"></app-number-view>
+    <app-num-pad *ngIf="isNumPadVisible" (selectedNumber)="onAmountSelected($event)"></app-num-pad>
 
     <mat-card *ngIf="!isCategoryVisible && !isPayeeVisible && !isNumPadVisible">
       <mat-card-header>
@@ -111,3 +112,4 @@
     </mat-card>
   </div>
 </form>
+</div>

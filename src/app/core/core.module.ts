@@ -1,7 +1,6 @@
 import { LayoutModule } from './layout/layout.module';
 import { CommonModule } from '@angular/common';
-import { MenuListItemComponent } from './menu-list-item/menu-list-item.component';
-import { TopNavComponent } from './top-nav/top-nav.component';
+
 
 import { NavService } from './services/nav.service';
 

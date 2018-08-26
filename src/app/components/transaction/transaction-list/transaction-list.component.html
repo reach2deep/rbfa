@@ -19,16 +19,16 @@
         (page)='setPage($event)'>
 
           <!-- Row Detail Template -->
-          <ngx-datatable-row-detail [rowHeight]="50" #myDetailRow (toggle)="onDetailToggle($event)">
+          <!-- <ngx-datatable-row-detail [rowHeight]="50" #myDetailRow (toggle)="onDetailToggle($event)">
                         <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
                           <div style="padding-left:60px; font-size:14px">
                             <div>{{row.transactionDate}}, {{row.Category}} ,{{row.subCategory}} </div>
                           </div>
                         </ng-template>
-                      </ngx-datatable-row-detail>
+                      </ngx-datatable-row-detail> -->
 
                         <!-- Column Templates -->
-         <ngx-datatable-column
+         <!-- <ngx-datatable-column
          [width]="50"
          [resizeable]="false"
          [sortable]="false"
@@ -44,11 +44,11 @@
              class="desktop-hidden">
            </a>
          </ng-template>
-       </ngx-datatable-column>
+       </ngx-datatable-column> -->
 
         <!-- Columns -->
     <ngx-datatable-column name="Type" prop="transactionType" [flexGrow]="3" ></ngx-datatable-column>    
-    <ngx-datatable-column name="Date" prop="transactionDate" [flexGrow]="3" [minWidth]="80" >
+    <ngx-datatable-column name="Date" prop="transactionDate" [flexGrow]="3">
             <ng-template let-value="value" ngx-datatable-cell-template>
             {{ value | date:'dd-MM-yyyy'}}
             </ng-template>

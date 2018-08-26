@@ -1,3 +1,4 @@
+import { NumPadComponent } from './../../core/controls/num-pad/num-pad.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ListModule } from './../../core/common/list/list.module';
 import { NumberViewComponent } from './number-view/number-view.component';
@@ -20,6 +21,7 @@ import {NgcFloatButtonModule} from 'ngc-float-button';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MomentModule } from 'ngx-moment';
 import { PageModule } from '../../core/common/page/page.module';
+import { NumPadModule } from '../../core/controls/num-pad/num-pad.module';
 
 
 @NgModule({
@@ -36,7 +38,8 @@ import { PageModule } from '../../core/common/page/page.module';
         TransactionRoutingModule,
         NgcFloatButtonModule,
         FontAwesomeModule,
-        MomentModule
+        MomentModule,
+        NumPadModule
     ],
     declarations: [
         TransactionDashboardComponent,

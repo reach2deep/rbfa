@@ -1,3 +1,5 @@
+import { NumPadModule } from './../../core/controls/num-pad/num-pad.module';
+import { NumPadComponent } from './../../core/controls/num-pad/num-pad.component';
 import { NumberViewComponent } from './../transaction/number-view/number-view.component';
 import { AccountDetailComponent } from './account-detail/account-detail.component';
 import { Api } from './../../core/common/api';
@@ -25,12 +27,13 @@ import { AccountRoutingModule } from './account-routing.module';
         NgcFloatButtonModule,
         FontAwesomeModule,
         MomentModule,
-        AccountRoutingModule
+        AccountRoutingModule,
+        NumPadModule
     ],
     exports: [],
     declarations: [
         AccountListComponent,
-        AccountDetailComponent  
+        AccountDetailComponent
       ],
 
     entryComponents: [

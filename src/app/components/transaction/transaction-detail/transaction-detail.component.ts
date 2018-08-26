@@ -173,7 +173,7 @@ imageSrc: any;
 fileChangeEvent(event: any) {
   console.log('fileChangeEvent');
   const files = event.srcElement.files;
-  console.log(files);
+  // console.log(files);
     this.filesToUpload = <Array<File>>event.target.files;
 
     if (event.target.files && event.target.files[0]) {
@@ -181,7 +181,7 @@ fileChangeEvent(event: any) {
 
       reader.onload = (event: ProgressEvent) => {
         this.url = (<FileReader>event.target).result;
-        console.log('this.url ' + this.url );
+        // console.log('this.url ' + this.url );
       }
       reader.readAsDataURL(event.target.files[0]);
     }
